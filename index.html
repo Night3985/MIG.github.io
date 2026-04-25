@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>МИГ — premium automotive safety platform</title>
+  <meta name="description" content="МИГ — премиальная safety-tech платформа: устройство, мобильное приложение, AI, биометрия, алкотестер, облако, fleet dashboard и аналитика." />
+  <meta property="og:title" content="МИГ — автомобильная safety-tech платформа" />
+  <meta property="og:description" content="Система, которая предотвращает опасные поездки, защищает автомобиль и вызывает помощь при ДТП." />
+  <meta name="theme-color" content="#02030a" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="compact-mode">
+  <div class="ambient"></div>
+  <div class="premium-bg"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="lux-grid" aria-hidden="true"></div>
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="noise"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <header class="header">
+    <a class="brand" href="#top" aria-label="МИГ">
+      <span class="brand-mark">M</span>
+      <span>МИГ</span>
+    </a>
+    <button class="menu" aria-label="Открыть меню">☰</button>
+    <nav class="nav">
+      <a href="#problem">Проблема</a>
+      <a href="#product">Платформа</a>
+      <a href="#app">Приложение</a>
+      <a href="#dashboard">Автопарк</a>
+      <a href="#business">Экономика</a>
+      <a href="#video">ИИ‑курс</a>
+      <div class="nav-actions">
+        <button class="music-btn" id="musicToggle" type="button">♪ Музыка</button>
+        <a class="nav-btn" href="#contact">Связаться</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="music-panel" id="musicPanel" aria-hidden="true">
+    <div class="music-panel-head">
+      <b>Музыка презентации</b>
+      <button type="button" id="closeMusicPanel">×</button>
+    </div>
+    <div class="music-actions">
+      <button type="button" id="musicPlay">Включить выбранный звук</button>
+      <button type="button" id="musicStop">Выключить</button>
+    </div>
+    <div class="volume-presets">
+      <button type="button" data-volume="15">Тихо</button>
+      <button type="button" data-volume="35" class="active">Средне</button>
+      <button type="button" data-volume="65">Громко</button>
+    </div>
+    <label class="upload-track">
+      <span>Загрузить свой MP3/WAV</span>
+      <input type="file" id="musicUpload" accept="audio/*">
+    </label>
+    <div class="volume-row">
+      <span>Громкость</span>
+      <input type="range" id="musicVolume" min="0" max="100" value="35">
+    </div>
+    <small>Музыка не запускается автоматически. Сначала выберите громкость или загрузите свой трек, затем нажмите “Включить”.</small>
+  </div>
+
+  <div class="page-progress"><span></span></div>
+  <div class="slide-dots" aria-hidden="true"><a href="#top"></a><a href="#problem"></a><a href="#product"></a><a href="#app"></a><a href="#dashboard"></a><a href="#contact"></a></div>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy reveal">
+        <div class="badge-line">
+          <span>Автомобильная SafetyTech‑платформа</span>
+          <span>Устройство + облако + приложение</span>
+        </div>
+        <h1>МИГ — платформа безопасности автомобиля</h1>
+        <p class="lead">
+          Устройство, приложение, AI‑аналитика и облачная панель автопарка в одной системе.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#contact">Получить презентацию для инвестора</a>
+          <a class="btn glass" href="#app">Смотреть приложение</a>
+          <a class="btn dark" href="#simulator">Запустить симулятор</a>
+        </div>
+        <div class="hero-note">
+          <button class="mini-demo" id="openModal" type="button">▶ Быстрое демо продукта</button>
+          <span>Сайт показывает устройство, приложение, экономику, B2B‑панель и сценарии безопасности.</span>
+        </div>
+        <div class="device-control-strip">
+          <button type="button" data-device-mode="safe">Безопасный режим</button>
+          <button type="button" data-device-mode="guard">Охрана</button>
+          <button type="button" data-device-mode="demo">Демо инвестору</button>
+          <button type="button" data-device-mode="service">Диагностика</button>
+        </div>
+        <div class="device-mode-text" id="deviceModeText">Устройство работает в безопасном режиме: водитель допущен, алкотест пройден, GPS и камера активны.</div>
+
+        <div class="hero-metrics">
+          <div><b>90%</b><span>аварий — человеческий фактор</span></div>
+          <div><b>112</b><span>автовызов помощи</span></div>
+          <div><b>AES‑256</b><span>защита данных</span></div>
+        </div>
+      </div>
+
+      <div class="hero-stage reveal">
+        <div class="hologram-ring"></div>
+        <div class="device-shell" role="img" aria-label="Интерактивный макет устройства МИГ">
+          <div class="device-top">
+            <div class="camera-pop"></div>
+            <div class="camera-pop small"></div>
+          </div>
+          <div class="device-face">
+            <button class="dial" data-demo="alco" aria-label="Алкотестер"></button>
+            <div class="screen">
+              <div class="screen-top"><span>МИГ OS</span><b id="screen-status">ONLINE</b></div>
+              <div class="metric" id="screen-metric">36.6°C</div>
+              <div class="chart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="chat">
+                <span id="screen-line-1">AI: система готова</span>
+                <b id="screen-line-2">Проверка пройдена</b>
+              </div>
+            </div>
+            <button class="finger" data-demo="finger" aria-label="Сканер отпечатка"></button>
+          </div>
+          <div class="device-logo">МИГ</div>
+          <div class="ports"><span></span><span></span><span></span><span></span></div>
+        </div>
+
+        <div class="floating-card card-a">
+          <span>Индекс риска</span><b>Низкий</b>
+        </div>
+        <div class="floating-card card-b">
+          <span>Статус автопарка</span><b>56 / 70 активны</b>
+        </div>
+        <div class="floating-card card-c">
+          <span>Последняя проверка</span><b>0.00‰</b>
+        </div>
+      </div>
+    </section>
+
+    <section id="problem" class="section problem">
+      <div class="section-head reveal">
+        <p class="kicker">01 · Почему это важно</p>
+        <h2>Рынку нужна не ещё одна камера, а система, которая снижает риск до того, как случится авария.</h2>
+      </div>
+      <div class="stats">
+        <div class="stat reveal"><strong>&gt;1 трлн ₽</strong><span>экономический ущерб от ДТП</span></div>
+        <div class="stat reveal"><strong>144,9 тыс.</strong><span>пострадавших за год</span></div>
+        <div class="stat reveal"><strong>90%</strong><span>аварий из-за человеческого фактора</span></div>
+      </div>
+      <div class="impact reveal">
+        <div class="impact-copy">
+          <h3>МИГ закрывает полный цикл безопасности: профилактика, контроль, реакция и отчётность.</h3>
+          <p>Система объединяет доступ, состояние водителя, камеры, телематику и AI в один непрерывный safety-loop.</p>
+        </div>
+        <div class="impact-flow">
+          <span>Проверка</span><i></i><span>Поездка</span><i></i><span>Событие</span><i></i><span>Помощь</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="product" class="section product">
+      <div class="section-head reveal">
+        <p class="kicker">02 · Платформа</p>
+        <h2>Единая экосистема безопасности вместо разрозненных автомобильных гаджетов</h2>
+      </div>
+      <div class="product-grid">
+        <article class="feature reveal"><span>01</span><h3>Безопасный запуск</h3><p>Биометрия и алкотестер блокируют запуск опасной поездки.</p></article>
+        <article class="feature reveal"><span>02</span><h3>AI‑слой безопасности</h3><p>AI анализирует события, состояние водителя и сценарии помощи.</p></article>
+        <article class="feature reveal"><span>03</span><h3>Экстренная связь</h3><p>GPS/GSM отправляет координаты при ДТП или критическом состоянии.</p></article>
+        <article class="feature reveal"><span>04</span><h3>Аналитика автопарка</h3><p>B2B‑панель показывает риски, дисциплину, маршруты и отчёты.</p></article>
+      </div>
+
+      <div class="mega-functions reveal">
+        <div class="mega-head">
+          <p class="kicker">Максимальный функционал</p>
+          <h3>Что можно показывать инвестору как продуктовую глубину</h3>
+        </div>
+        <div class="mega-grid">
+          <div><b>Предстартовая проверка</b><span>алкотестер, лицо, отпечаток, температура, чек-лист водителя</span></div>
+          <div><b>Антиугон</b><span>биометрический доступ, блокировка запуска, геозона, тревоги</span></div>
+          <div><b>ДТП‑сценарии</b><span>удар, переворот, потеря сознания, отправка координат</span></div>
+          <div><b>Видео</b><span>салон, дорога, архив событий, быстрый экспорт</span></div>
+          <div><b>AI‑помощник</b><span>голосовые команды, диагностика, подсказки, отчёты</span></div>
+          <div><b>Автопарк</b><span>карта, статусы, рейтинг водителей, нарушения, API</span></div>
+          <div><b>Страхование</b><span>скоринг водителя и снижение риска для страховых партнёров</span></div>
+          <div><b>Семейный режим</b><span>уведомления близким, история поездок, контроль безопасности</span></div>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="app" class="section app-premium">
+      <div class="section-head reveal center">
+        <p class="kicker">03 · Мобильное приложение</p>
+        <h2>Приложение МИГ — тёмный cockpit безопасности</h2>
+        <p class="muted">Вернул расширенный интерфейс: 12 экранов, быстрые действия, автопарк, отчёты, защита, настройки, подписки и поддержка.</p>
+      </div>
+
+      <div class="app-showcase dark-phone-showcase">
+        <div class="app-toolbar reveal">
+          <div class="app-status-panel">
+            <b id="phoneScreenTitle">Главная</b>
+            <span id="phoneScreenDesc">Общий статус автомобиля, быстрые действия и события.</span>
+          </div>
+          <div class="app-controls">
+            <button class="app-tab active" data-screen="home">Главная</button>
+            <button class="app-tab" data-screen="driver">Водитель</button>
+            <button class="app-tab" data-screen="map">Карта</button>
+            <button class="app-tab" data-screen="fleet">Автопарк</button>
+            <button class="app-tab" data-screen="security">Защита</button>
+            <button class="app-tab" data-screen="reports">Отчёты</button>
+            <button class="app-tab" data-screen="video">Видео</button>
+            <button class="app-tab" data-screen="settings">Настройки</button>
+            <button class="app-tab" data-screen="sos">SOS</button>
+            <button class="app-tab" data-screen="support">Поддержка</button>
+            <button class="app-tab" data-screen="store">Подписки</button>
+            <button class="app-tab" data-screen="profile">Профиль</button>
+          </div>
+        </div>
+
+        <div class="phone-lab clean-phone-lab reveal">
+          <div class="premium-phone clean-phone dark-phone">
+            <div class="phone-frame">
+              <div class="phone-glass"></div>
+              <div class="phone-island"></div>
+
+              <div class="app-screen active" data-phone-screen="home">
+                <div class="mobile-header"><div><small>МИГ Safety</small><b>Авто защищено</b></div><span class="status-dot ok"></span></div>
+                <div class="home-hero-card"><div><small>Индекс безопасности</small><b>94</b><span>риск низкий</span></div><div class="mini-ring"></div></div>
+                <div class="phone-action-grid">
+                  <button data-phone-action="lock">Блок</button><button data-phone-action="route">Маршрут</button><button data-phone-action="report">Отчёт</button><button data-phone-action="sos">SOS</button>
+                  <button data-phone-action="guard">Охрана</button><button data-phone-action="video">Видео</button><button data-phone-action="family">Семья</button><button data-phone-action="service">Сервис</button>
+                </div>
+                <div class="app-mini-feed phone-scroll" id="phoneFeed"><p><b>12:31</b> Алкотест пройден</p><p><b>12:32</b> Водитель допущен</p><p><b>12:34</b> Камера активна</p></div>
+              </div>
+
+              <div class="app-screen" data-phone-screen="driver">
+                <div class="mobile-header"><div><small>Водитель</small><b>Алексей С.</b></div><span class="avatar">A</span></div>
+                <div class="driver-license-card"><b>Допуск разрешён</b><span>Лицо ✓ · Отпечаток ✓ · 0.00‰</span></div>
+                <div class="mobile-grid"><div><small>Температура</small><b>36.6°C</b></div><div><small>Усталость</small><b>низкая</b></div><div><small>Рейтинг</small><b>96%</b></div><div><small>Поездки</small><b>184</b></div></div>
+                <div class="driver-buttons"><button>История</button><button>Допуски</button><button>Семья</button></div>
+              </div>
+
+              <div class="app-screen" data-phone-screen="map">
+                <div class="mobile-header"><div><small>Карта</small><b>BMW X5 · AE1230</b></div><span class="live">LIVE</span></div>
+                <div class="premium-map compact-map"><svg viewBox="0 0 300 220" preserveAspectRatio="none"><path d="M0 58 C70 15, 95 145, 162 96 S250 28, 300 78"/><path d="M20 190 C80 150, 120 220, 170 170 S235 125, 300 154"/><path class="route-line" d="M42 170 C85 138, 130 150, 164 118 S220 82, 258 96"/></svg><i class="pin p1"></i><i class="pin p2"></i><i class="car-pin">●</i></div>
+                <div class="map-actions"><button>Геозона</button><button>Поделиться</button></div>
+                <div class="trip-card"><b>Маршрут активен</b><span>14.2 км · 22 мин · риск низкий</span></div>
+              </div>
+
+              <div class="app-screen" data-phone-screen="fleet">
+                <div class="mobile-header"><div><small>B2B</small><b>Автопарк</b></div><span class="live">70</span></div>
+                <div class="fleet-summary"><div><b>56</b><span>в работе</span></div><div><b>5</b><span>тревоги</span></div><div><b>87%</b><span>индекс</span></div></div>
+                <div class="fleet-list phone-scroll"><div><span class="dot green"></span><b>AE1230</b><small>0.00‰ · онлайн</small></div><div><span class="dot yellow"></span><b>BC4581</b><small>усталость · проверить</small></div><div><span class="dot red"></span><b>KM9022</b><small>алкотест не пройден</small></div><div><span class="dot yellow"></span><b>TX4100</b><small>выезд из геозоны</small></div></div>
+                <div class="driver-buttons"><button>PDF</button><button>CRM</button><button>API</button></div>
+              </div>
+
+              <div class="app-screen" data-phone-screen="security">
+                <div class="mobile-header"><div><small>Защита</small><b>Охрана активна</b></div><span class="live">ON</span></div>
+                <div class="security-ring"><div><b>87%</b><span>защита</span></div></div>
+                <div class="security-list"><div><span class="dot green"></span><b>Биометрия</b><small>только владелец</small></div><div><span class="dot green"></span><b>CAN</b><small>контроль дверей</small></div><div><span class="dot yellow"></span><b>Удар</b><small>средняя чувствительность</small></div></div>
+                <button class="mobile-action">Усилить охрану</button>
+              </div>
+
+              <div class="app-screen" data-phone-screen="reports">
+                <div class="mobile-header"><div><small>Отчёты</small><b>Неделя</b></div><span class="live">PDF</span></div>
+                <div class="report-card big"><small>Индекс безопасности</small><b>+18%</b><span>лучше прошлой недели</span></div>
+                <div class="report-list"><div><b>12</b><span>поездок</span></div><div><b>0</b><span>ДТП</span></div><div><b>3</b><span>предупр.</span></div></div>
+                <div class="driver-buttons"><button>PDF</button><button>CSV</button><button>CRM</button></div>
+              </div>
+
+              <div class="app-screen" data-phone-screen="video">
+                <div class="mobile-header"><div><small>Видео</small><b>Камеры</b></div><span class="live red-live">REC</span></div>
+                <div class="video-preview"><div class="road-lines"></div><span class="rec-dot"></span><b>Передняя камера</b></div>
+                <div class="camera-tabs"><button>Дорога</button><button>Салон</button><button>События</button></div>
+                <div class="video-list"><div><b>12:34</b><span>Резкое торможение</span></div><div><b>12:31</b><span>Запуск регистратора</span></div></div>
+              </div>
+
+              <div class="app-screen" data-phone-screen="settings">
+                <div class="mobile-header"><div><small>Настройки</small><b>Сценарии</b></div><span class="live">AUTO</span></div>
+                <div class="toggle-list phone-scroll"><label><span>Блокировать при алкотесте</span><input type="checkbox" checked></label><label><span>Уведомлять близких</span><input type="checkbox" checked></label><label><span>Видео при ударе</span><input type="checkbox" checked></label><label><span>AI‑усталость</span><input type="checkbox" checked></label></div>
+                <div class="settings-card"><b>Чувствительность ДТП</b><input type="range" min="1" max="10" value="7"></div>
+              </div>
+
+              <div class="app-screen" data-phone-screen="sos">
+                <div class="mobile-header"><div><small>SOS</small><b>Экстренно</b></div><span class="live red-live">112</span></div>
+                <div class="sos-circle"><b>SOS</b><span>координаты готовы</span></div>
+                <div class="sos-steps"><div><b>1</b><span>Удар</span></div><div><b>2</b><span>GPS</span></div><div><b>3</b><span>Контакты</span></div><div><b>4</b><span>Видео</span></div></div>
+                <button class="mobile-action danger">Запустить SOS</button>
+              </div>
+
+              <div class="app-screen" data-phone-screen="support">
+                <div class="mobile-header"><div><small>Поддержка</small><b>24/7</b></div><span class="live">HELP</span></div>
+                <div class="support-buttons"><button>Чат</button><button>Оператор</button><button>ДТП</button><button>Сервис</button></div>
+                <div class="ticket-card"><b>Заявка #1048</b><span>Камера салона · в работе</span></div>
+                <div class="feedback-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div>
+              </div>
+
+              <div class="app-screen" data-phone-screen="store">
+                <div class="mobile-header"><div><small>Подписки</small><b>Модули</b></div><span class="live">PRO</span></div>
+                <div class="store-list phone-scroll"><div><b>AI‑аналитика</b><span>расширенный риск</span><em>включено</em></div><div><b>Видеоархив</b><span>30 дней</span><em>+990 ₽</em></div><div><b>Family</b><span>5 пользователей</span><em>+490 ₽</em></div><div><b>Fleet API</b><span>CRM/1C</span><em>B2B</em></div></div>
+                <button class="mobile-action">Управлять</button>
+              </div>
+
+              <div class="app-screen" data-phone-screen="profile">
+                <div class="mobile-header"><div><small>Аккаунт</small><b>Алексей С.</b></div><span class="avatar">A</span></div>
+                <div class="profile-card"><div class="profile-avatar">A</div><b>Владелец</b><span>МИГ PRO · AE1230</span></div>
+                <div class="profile-metrics"><div><b>184</b><span>поездки</span></div><div><b>0</b><span>ДТП</span></div><div><b>96%</b><span>дисцип.</span></div></div>
+                <div class="access-list"><div><b>Семья</b><span>маршрут</span></div><div><b>Автопарк</b><span>отчёты</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="dashboard" class="section dashboard premium-dashboard compact-dashboard">
+      <div class="section-head reveal">
+        <p class="kicker">04 · B2B‑панель автопарка</p>
+        <h2>Автопарк: машины, водители, инциденты, финансы</h2>
+        <p class="muted">Этот блок показывает инвестору, что МИГ — не просто устройство, а SaaS‑платформа для бизнеса с понятными экранами и повторяющейся выручкой.</p>
+      </div>
+
+      <div class="fleet-tabs reveal">
+        <button class="fleet-tab active" data-fleet="overview">Обзор</button>
+        <button class="fleet-tab" data-fleet="cars">Машины</button>
+        <button class="fleet-tab" data-fleet="drivers">Водители</button>
+        <button class="fleet-tab" data-fleet="incidents">Инциденты</button>
+        <button class="fleet-tab" data-fleet="finance">Финансы</button>
+        <button class="fleet-tab" data-fleet="reports">Отчёты</button>
+        <button class="fleet-tab" data-fleet="service">Сервис</button>
+        <button class="fleet-tab" data-fleet="api">API</button>
+      </div>
+
+      <div class="dash-window reveal">
+        <div class="dash-sidebar">
+          <b>МИГ Fleet</b>
+          <span class="active" data-fleet-side="overview">Обзор</span>
+          <span data-fleet-side="cars">Машины</span>
+          <span data-fleet-side="drivers">Водители</span>
+          <span data-fleet-side="incidents">Инциденты</span>
+          <span data-fleet-side="finance">Финансы</span>
+          <span data-fleet-side="reports">Отчёты</span>
+          <span data-fleet-side="service">Сервис</span>
+          <span data-fleet-side="api">API</span>
+        </div>
+
+        <div class="dash-main">
+          <div class="fleet-screen active" data-fleet-screen="overview">
+            <div class="dash-top">
+              <div><small>Индекс безопасности</small><b>87%</b><em>+12% за месяц</em></div>
+              <div><small>Активные машины</small><b>56</b><em>из 70</em></div>
+              <div><small>Критичные тревоги</small><b>5</b><em>требуют проверки</em></div>
+              <div><small>MRR пилота</small><b>350k ₽</b><em>подписка</em></div>
+            </div>
+            <div class="dash-content">
+              <div class="dash-map">
+                <i class="v1"></i><i class="v2"></i><i class="v3"></i><i class="v4"></i>
+                <div class="dash-route r1"></div>
+                <div class="dash-route r2"></div>
+              </div>
+              <div class="dash-alerts">
+                <h3>Онлайн‑события</h3>
+                <div class="fleet-actions">
+                  <button type="button" data-fleet-action="notify">Уведомить</button>
+                  <button type="button" data-fleet-action="lock">Блокировать</button>
+                  <button type="button" data-fleet-action="pdf">PDF</button>
+                </div>
+                <p><b>KM9022</b><span>алкотест не пройден</span></p>
+                <p><b>BC4581</b><span>признаки усталости</span></p>
+                <p><b>AE1230</b><span>поездка безопасна</span></p>
+                <p><b>TX4100</b><span>выезд из геозоны</span></p>
+              <div class="fleet-action-log" id="fleetActionLog">
+                  <b>Журнал действий</b>
+                  <p>Действия будут появляться здесь, внутри слайда.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="fleet-screen" data-fleet-screen="cars">
+            <div class="fleet-table">
+              <div class="fleet-row head"><span>Авто</span><span>Статус</span><span>Водитель</span><span>Риск</span></div>
+              <div class="fleet-row"><span>AE1230</span><span class="ok">В работе</span><span>Алексей</span><span>Низкий</span></div>
+              <div class="fleet-row"><span>BC4581</span><span class="warn">Проверить</span><span>Мария</span><span>Средний</span></div>
+              <div class="fleet-row"><span>KM9022</span><span class="danger">Блокировка</span><span>Иван</span><span>Высокий</span></div>
+              <div class="fleet-row"><span>TX4100</span><span class="warn">Геозона</span><span>Олег</span><span>Средний</span></div>
+            </div>
+            <div class="fleet-mini-grid">
+              <div><b>70</b><span>машин подключено</span></div>
+              <div><b>14</b><span>требуют сервиса</span></div>
+              <div><b>98%</b><span>GPS онлайн</span></div>
+            </div>
+          </div>
+
+          <div class="fleet-screen" data-fleet-screen="drivers">
+            <div class="driver-cards">
+              <article><b>Алексей</b><span>96% · спокойный стиль</span><i></i></article>
+              <article><b>Мария</b><span>94% · без нарушений</span><i></i></article>
+              <article><b>Иван</b><span>62% · нужен контроль</span><i class="bad"></i></article>
+            </div>
+            <div class="driver-chart"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+
+          <div class="fleet-screen" data-fleet-screen="incidents">
+            <div class="incident-list">
+              <div><b>Алкотест не пройден</b><span>KM9022 · 12:30 · запуск заблокирован</span><em>Критично</em></div>
+              <div><b>Усталость водителя</b><span>BC4581 · 21:06 · AI‑предупреждение</span><em>Средне</em></div>
+              <div><b>Выезд из геозоны</b><span>TX4100 · 18:14 · диспетчер уведомлён</span><em>Средне</em></div>
+              <div><b>Резкое торможение</b><span>AE1230 · 12:34 · видео сохранено</span><em>Низко</em></div>
+            </div>
+          </div>
+
+          <div class="fleet-screen" data-fleet-screen="finance">
+            <div class="finance-grid">
+              <div><small>MRR</small><b>350 000 ₽</b><span>70 × 5 000 ₽</span></div>
+              <div><small>ARR</small><b>4 200 000 ₽</b><span>годовая подписка</span></div>
+              <div><small>Себестоимость партии</small><b>1 400 000 ₽</b><span>70 × 20 000 ₽</span></div>
+              <div><small>Окупаемость</small><b>4 мес.</b><span>за счёт подписки</span></div>
+            </div>
+            <div class="finance-bars"><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+
+          <div class="fleet-screen" data-fleet-screen="reports">
+            <div class="report-actions">
+              <button>Скачать PDF</button>
+              <button>Экспорт CSV</button>
+              <button>Отправить в CRM</button>
+              <button>API‑события</button>
+            </div>
+            <div class="report-preview">
+              <b>Еженедельный отчёт безопасности</b>
+              <span>70 машин · 184 поездки · 5 критичных тревог · индекс 87%</span>
+              <p>Отчёт показывает нарушения, алкотесты, ДТП‑события, маршруты, рейтинг водителей и экономику подписки.</p>
+            </div>
+          </div>
+
+          <div class="fleet-screen" data-fleet-screen="service">
+            <div class="service-grid">
+              <div><b>Камеры</b><span>68/70 онлайн</span><em>проверить 2</em></div>
+              <div><b>Алкотестеры</b><span>70/70 активны</span><em>OK</em></div>
+              <div><b>GPS</b><span>98% стабильность</span><em>OK</em></div>
+              <div><b>SIM / 4G</b><span>64/70 отличный сигнал</span><em>6 слабый</em></div>
+            </div>
+            <div class="maintenance-list">
+              <p><b>BC4581</b><span>Плановая калибровка алкотестера через 12 дней</span></p>
+              <p><b>KM9022</b><span>Рекомендуется проверить камеру салона</span></p>
+              <p><b>TX4100</b><span>Низкий уровень сигнала GPS в зоне стоянки</span></p>
+            </div>
+          </div>
+
+          <div class="fleet-screen" data-fleet-screen="api">
+            <div class="api-grid">
+              <div><small>Webhook событий</small><b>active</b><span>/events/safety</span></div>
+              <div><small>CRM / 1C</small><b>ready</b><span>водители, поездки, отчёты</span></div>
+              <div><small>Страховые</small><b>scoring</b><span>риск‑индекс водителя</span></div>
+            </div>
+            <div class="api-console">
+              <code>{ "car": "KM9022", "event": "alcohol_failed", "action": "engine_locked" }</code>
+              <code>{ "driver": "BC4581", "risk": "fatigue", "notify": "dispatcher" }</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="business" class="section business">
+      <div class="section-head reveal">
+        <p class="kicker">05 · Экономика</p>
+        <h2>Выручка с устройств открывает клиента, подписка строит капитализацию</h2>
+      </div>
+      <div class="pricing">
+        <div class="price-card reveal"><p>Себестоимость устройства</p><strong>20 000 ₽</strong><span>производственная себестоимость одной единицы продукта</span></div>
+        <div class="price-card glow reveal"><p>Подписка</p><strong>5 000 ₽ / мес</strong><span>AI‑помощник, архив, аналитика, панель автопарка, API</span></div>
+      </div>
+      <div class="calculator reveal">
+        <div>
+          <p class="kicker">Калькулятор инвестора</p>
+          <h3>Потенциал пилота</h3>
+          <p class="muted">Передвинь ползунок — сайт показывает hardware revenue, Месячная подписка и Годовая подписка.</p>
+        </div>
+        <div class="calc-card">
+          <label>Количество машин: <b id="carsValue">100</b></label>
+          <input id="carsRange" type="range" min="10" max="3000" value="100" step="10">
+
+          <div class="calc-duo">
+            <label>Цена продажи: <b id="saleValue">35 000 ₽</b></label>
+            <input id="saleRange" type="range" min="20000" max="90000" value="35000" step="1000">
+            <label>Подписка в месяц: <b id="subValue">5 000 ₽</b></label>
+            <input id="subRange" type="range" min="1000" max="15000" value="5000" step="500">
+            <label>Срок расчёта: <b id="termValue">24 мес.</b></label>
+            <input id="termRange" type="range" min="6" max="60" value="24" step="6">
+            <label>Конверсия пилота: <b id="convValue">35%</b></label>
+            <input id="convRange" type="range" min="5" max="80" value="35" step="5">
+            <label>Партнёрская комиссия: <b id="commissionValue">10%</b></label>
+            <input id="commissionRange" type="range" min="0" max="30" value="10" step="1">
+            <label>Маркетинг в месяц: <b id="marketingValue">150 000 ₽</b></label>
+            <input id="marketingRange" type="range" min="0" max="1000000" value="150000" step="50000">
+          </div>
+          <div class="calc-scenarios">
+            <button type="button" data-calc-preset="startup">Стартап</button>
+            <button type="button" data-calc-preset="fleet">Автопарк</button>
+            <button type="button" data-calc-preset="scale">Масштаб</button>
+          </div>
+
+          <div class="calc-results max-results investor-results">
+            <div><span>Себестоимость партии</span><strong id="costRevenue">2 000 000 ₽</strong></div>
+            <div><span>Выручка с устройств</span><strong id="hardwareRevenue">3 500 000 ₽</strong></div>
+            <div><span>Валовая прибыль</span><strong id="grossProfit">1 500 000 ₽</strong></div>
+            <div><span>MRR</span><strong id="mrrRevenue">500 000 ₽</strong></div>
+            <div><span>ARR</span><strong id="arrRevenue">6 000 000 ₽</strong></div>
+            <div><span>Окупаемость</span><strong id="payback">4 мес.</strong></div>
+            <div><span>LTV периода</span><strong id="ltvRevenue">12 000 000 ₽</strong></div>
+            <div><span>Валовая маржа</span><strong id="grossMargin">43%</strong></div>
+            <div><span>Ожидаемые клиенты</span><strong id="expectedClients">35</strong></div>
+            <div><span>Ожидаемый MRR</span><strong id="expectedMrr">175 000 ₽</strong></div>
+            <div><span>Комиссия партнёрам</span><strong id="partnerCommission">350 000 ₽</strong></div>
+            <div><span>Чистый MRR</span><strong id="netMrr">350 000 ₽</strong></div>
+          </div>
+          <div class="calc-note" id="calcNote">При 100 машинах проект получает 500 000 ₽ MRR и 6 000 000 ₽ ARR.</div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section roi">
+      <div class="section-head reveal">
+        <p class="kicker">Почему это продаётся</p>
+        <h2>МИГ закрывает сразу три мотива покупки</h2>
+      </div>
+      <div class="roi-grid">
+        <article class="roi-card reveal">
+          <span>01</span>
+          <h3>Безопасность</h3>
+          <p>Снижает риск опасной поездки, ДТП и несвоевременной помощи.</p>
+        </article>
+        <article class="roi-card reveal">
+          <span>02</span>
+          <h3>Контроль</h3>
+          <p>Владелец или автопарк видит водителя, машину, события и нарушения.</p>
+        </article>
+        <article class="roi-card reveal">
+          <span>03</span>
+          <h3>Экономика</h3>
+          <p>Для B2B это снижение аварийности, простоев, спорных ситуаций и убытков.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section compare">
+      <div class="section-head reveal">
+        <p class="kicker">Конкурентная позиция</p>
+        <h2>МИГ объединяет антиугон, телематику, AI и безопасность водителя</h2>
+      </div>
+      <div class="table reveal">
+        <div></div><div>StarLine</div><div>Pandect</div><div>МИГ</div>
+        <div>Доступ по биометрии</div><div>×</div><div>×</div><div class="yes">✓</div>
+        <div>Алкотестер перед стартом</div><div>×</div><div>×</div><div class="yes">✓</div>
+        <div>Панель автопарка</div><div class="yes">✓</div><div>×</div><div class="yes">✓</div>
+        <div>GPS и аналитика</div><div class="yes">✓</div><div>×</div><div class="yes">✓</div>
+        <div>CAN‑интеграция</div><div>×</div><div class="yes">✓</div><div class="yes">✓</div>
+        <div>AI‑помощник</div><div>×</div><div>×</div><div class="yes">✓</div>
+      </div>
+    </section>
+
+
+    
+    <section class="section blueprints">
+      <div class="section-head reveal">
+        <p class="kicker">Схемы и логика</p>
+        <h2>Как МИГ связывает устройство, приложение, облако и автопарк</h2>
+        <p class="muted">Инвестору важно видеть не только красивый интерфейс, но и понятную архитектуру продукта.</p>
+      </div>
+      <div class="blueprint-grid reveal">
+        <div class="blue-node">Устройство<br><span>датчики, камера, биометрия</span></div>
+        <i></i>
+        <div class="blue-node">Облако<br><span>события, видео, AES‑256</span></div>
+        <i></i>
+        <div class="blue-node">Приложение<br><span>семья, водитель, SOS</span></div>
+        <i></i>
+        <div class="blue-node">Fleet OS<br><span>B2B, отчёты, API</span></div>
+      </div>
+      <div class="scheme-cards">
+        <article class="reveal"><b>Предотвращение</b><p>Алкотест + биометрия → решение о запуске → запись события.</p></article>
+        <article class="reveal"><b>Реакция</b><p>Удар/риск → GPS + видео → уведомление 112/близких/диспетчера.</p></article>
+        <article class="reveal"><b>Монетизация</b><p>Устройство → подписка → аналитика → API и партнёрские модули.</p></article>
+      </div>
+    </section>
+
+<section id="simulator" class="section simulator platinum-simulator">
+      <div class="section-head reveal">
+        <p class="kicker">06 · Интерактивный симулятор</p>
+        <h2>Демонстрация реакции МИГ в реальных ситуациях</h2>
+        <p class="muted">Симулятор показывает продуктовую логику МИГ: датчики фиксируют событие, система принимает решение, приложение запускает сценарий, бизнес получает отчёт.</p>
+      </div>
+
+      <div class="simulator-box reveal">
+        <div class="scenario-buttons">
+          <button class="scenario-btn active" data-scenario="normal"><b>Обычная поездка</b><span>водитель допущен</span></button>
+          <button class="scenario-btn" data-scenario="alcohol"><b>Алкотест не пройден</b><span>запуск заблокирован</span></button>
+          <button class="scenario-btn" data-scenario="crash"><b>ДТП</b><span>координаты и SOS</span></button>
+          <button class="scenario-btn" data-scenario="theft"><b>Попытка угона</b><span>биометрия не совпала</span></button>
+          <button class="scenario-btn" data-scenario="fatigue"><b>Усталость водителя</b><span>AI‑предупреждение</span></button>
+          <button class="scenario-btn" data-scenario="fleet"><b>Нарушение в автопарке</b><span>диспетчер получает отчёт</span></button>
+          <button class="scenario-btn" data-scenario="family"><b>Семейный режим</b><span>уведомление близким</span></button>
+          <button class="scenario-btn" data-scenario="service"><b>Сервис устройства</b><span>диагностика датчиков</span></button>
+        </div>
+
+        <div class="simulator-screen">
+          <div class="sim-preview">
+            <div class="sim-road">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="sim-car">
+              <div class="car-body"><span></span><span></span></div>
+              <div class="pulse-zone" id="pulseZone"></div>
+            </div>
+            <div class="sim-floating sim-f1"><b id="simSpeed">62</b><span>км/ч</span></div>
+            <div class="sim-floating sim-f2"><b id="simRisk">Низкий</b><span>риск</span></div>
+          </div>
+
+          <div class="sim-info">
+            <div class="sim-status" id="simStatus">Поездка разрешена</div>
+            <h3 id="simTitle">Система работает в фоновом режиме</h3>
+            <p id="simText">МИГ проверил водителя, подтвердил доступ и продолжает анализировать поездку.</p>
+
+            <div class="sim-actions" id="simActions">
+              <span>Биометрия ✓</span><span>Алкотест ✓</span><span>Камера ✓</span><span>GPS ✓</span>
+            </div>
+
+            <div class="sim-telemetry">
+              <div><small>Алкотест</small><b id="teleAlco">0.00‰</b></div>
+              <div><small>Биометрия</small><b id="teleBio">OK</b></div>
+              <div><small>GPS</small><b id="teleGps">Online</b></div>
+              <div><small>Видео</small><b id="teleVideo">REC</b></div>
+            </div>
+            <div class="sim-command-panel">
+              <button type="button" data-command="call">Вызвать помощь</button>
+              <button type="button" data-command="lock">Заблокировать запуск</button>
+              <button type="button" data-command="report">Сформировать отчёт</button>
+              <button type="button" data-command="notify">Уведомить контакты</button>
+            </div>
+            <div class="sim-command-result" id="simCommandResult">Выберите действие — система покажет результат.</div>
+
+            <div class="sim-log" id="simLog">
+              <b>Журнал сценария</b>
+              <p>12:30 · Водитель идентифицирован</p>
+              <p>12:31 · Алкотест пройден</p>
+              <p>12:32 · Поездка разрешена</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section packages">
+      <div class="section-head reveal">
+        <p class="kicker">Пакеты продукта</p>
+        <h2>Можно продавать разным клиентам без переделки ядра платформы</h2>
+      </div>
+      <div class="package-grid">
+        <article class="package-card reveal">
+          <span>B2C</span>
+          <h3>МИГ Family</h3>
+          <p>Для семей и частных владельцев: антиугон, безопасность близких, уведомления, SOS.</p>
+          <button>Запросить цену</button>
+        </article>
+        <article class="package-card featured reveal">
+          <span>B2B</span>
+          <h3>МИГ Fleet</h3>
+          <p>Для автопарков: карта, отчёты, рейтинг водителей, нарушения, API и подписка.</p>
+          <button>Запустить пилот</button>
+        </article>
+        <article class="package-card reveal">
+          <span>Partner</span>
+          <h3>МИГ API</h3>
+          <p>Для страховых и интеграторов: скоринг, события, телематика, аналитика рисков.</p>
+          <button>Стать партнёром</button>
+        </article>
+      </div>
+    </section>
+
+    
+    <section class="section client-value">
+      <div class="section-head reveal">
+        <p class="kicker">Почему понравится клиентам</p>
+        <h2>МИГ продаётся как сервис безопасности, контроля и снижения потерь</h2>
+      </div>
+      <div class="value-grid">
+        <article class="value-card reveal"><span>Для семьи</span><h3>Спокойствие за близких</h3><p>Маршрут, SOS, уведомления, контроль состояния водителя и история поездок.</p></article>
+        <article class="value-card reveal"><span>Для бизнеса</span><h3>Снижение потерь</h3><p>Меньше аварий, меньше спорных ситуаций, дисциплина водителей и отчётность.</p></article>
+        <article class="value-card reveal"><span>Для инвестора</span><h3>Подписочная модель</h3><p>Устройство открывает вход, а приложение, AI и аналитика создают регулярную выручку.</p></article>
+      </div>
+    </section>
+
+<section id="sales" class="section sales">
+      <div class="section-head reveal">
+        <p class="kicker">Продажи</p>
+        <h2>Готовая логика воронки: от пилота до масштабирования</h2>
+      </div>
+      <div class="sales-funnel reveal">
+        <div><b>1</b><span>Демо и презентация</span><p>Показываем проблему, устройство, приложение и экономику.</p></div>
+        <div><b>2</b><span>Пилот 10–50 авто</span><p>Собираем события, отчёты и подтверждаем снижение рисков.</p></div>
+        <div><b>3</b><span>Контракт</span><p>Продажа устройств + ежемесячная подписка.</p></div>
+        <div><b>4</b><span>Масштабирование</span><p>Подключение API, автопарков, страховых и партнёров.</p></div>
+      </div>
+    </section>
+
+    <section class="section investor-deck">
+      <div class="section-head reveal">
+        <p class="kicker">Что увидит инвестор</p>
+        <h2>Сайт теперь работает как живой pitch deck</h2>
+      </div>
+      <div class="deck-grid">
+        <div class="deck-card reveal"><b>Проблема</b><span>цифры, боль, человеческий фактор</span></div>
+        <div class="deck-card reveal"><b>Решение</b><span>устройство + приложение + облако</span></div>
+        <div class="deck-card reveal"><b>Продукт</b><span>9 экранов приложения и B2B‑панель</span></div>
+        <div class="deck-card reveal"><b>Экономика</b><span>себестоимость, подписка, ARR, окупаемость</span></div>
+        <div class="deck-card reveal"><b>Продажи</b><span>B2C, B2B, партнёры, API</span></div>
+        <div class="deck-card reveal"><b>Масштаб</b><span>автопарки, страховые, интеграторы</span></div>
+      </div>
+    </section>
+
+    <section class="section faq">
+      <div class="section-head reveal">
+        <p class="kicker">Вопросы инвестора</p>
+        <h2>Ответы на то, что обычно спрашивают на питче</h2>
+      </div>
+      <div class="faq-list reveal">
+        <details open><summary>Почему клиент будет платить подписку?</summary><p>Потому что ценность не только в устройстве, а в аналитике, видеоархиве, AI‑помощнике, отчётах, API и управлении автопарком.</p></details>
+        <details><summary>Что защищает продукт от копирования?</summary><p>Связка данных, сценариев безопасности, приложения, B2B‑аналитики, пользовательской истории и интеграций.</p></details>
+        <details><summary>Кому продавать первым?</summary><p>Лучший первый рынок — B2B‑автопарки: у них понятная экономика, боль аварийности и возможность быстро доказать эффект.</p></details>
+        <details><summary>Как масштабироваться?</summary><p>Через пилоты, серийную установку устройств, подписку, партнёрства со страховыми и API‑интеграции.</p></details>
+      </div>
+    </section>
+
+
+    
+    
+    <section id="video" class="section tech-video youtube-section">
+      <div class="section-head reveal">
+        <p class="kicker">ИИ и технологический контекст</p>
+        <h2>Видео о государственной поддержке искусственного интеллекта</h2>
+        <p class="muted">Этот ролик лучше использовать как контекст: рынок ИИ и технологических решений получает поддержку на государственном уровне. МИГ находится в той же логике — AI‑платформа для безопасности транспорта.</p>
+      </div>
+
+      <div class="youtube-wrap reveal">
+        <div class="youtube-frame">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/PxpIUZ6g-e0?rel=0&modestbranding=1"
+            title="Видео о поддержке искусственного интеллекта"
+            frameborder="0"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+          <div class="youtube-fallback">
+            <b>Если видео не открылось</b>
+            <span>YouTube иногда блокирует встраивание. Откройте ролик в новой вкладке.</span>
+            <a href="https://www.youtube.com/watch?v=PxpIUZ6g-e0" target="_blank" rel="noopener">Открыть на YouTube</a>
+          </div>
+        </div>
+        <div class="video-info">
+          <b>Как использовать на встрече</b>
+          <p>Сначала показать проблему аварийности, затем ролик как подтверждение общего курса на ИИ, после — перейти к МИГ: приложению, автопарку, симулятору и экономике.</p>
+          <div>
+            <span>1. Проблема</span>
+            <span>2. Курс на ИИ</span>
+            <span>3. МИГ‑решение</span>
+            <span>4. Экономика</span>
+          </div>
+          <small class="video-note">Важно: ролик используется как внешний контекст про развитие ИИ, а не как заявление о прямой поддержке проекта МИГ.</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="cabinet" class="section cabinet">
+      <div class="section-head reveal">
+        <p class="kicker">Личный кабинет</p>
+        <h2>Кабинет для владельца, инвестора и автопарка</h2>
+        <p class="muted">Кабинет показывает статусы, документы, заявки, подписки и финансовые показатели — это делает проект похожим на полноценную платформу.</p>
+      </div>
+      <div class="cabinet-tabs reveal">
+        <button class="cab-tab active" data-cab="owner">Владелец</button>
+        <button class="cab-tab" data-cab="investor">Инвестор</button>
+        <button class="cab-tab" data-cab="fleet">Автопарк</button>
+        <button class="cab-tab" data-cab="partner">Партнёр</button>
+      </div>
+      <div class="cabinet-window reveal">
+        <div class="cabinet-screen active" data-cab-screen="owner">
+          <div class="cab-head"><b>Кабинет владельца</b><span>BMW X5 · МИГ PRO · безопасность активна</span></div>
+          <div class="cab-grid">
+            <div><small>Статус</small><b>Защищён</b></div>
+            <div><small>Последняя поездка</small><b>22 мин</b></div>
+            <div><small>События</small><b>3</b></div>
+            <div><small>Подписка</small><b>PRO</b></div>
+          </div>
+          <div class="cab-actions"><button>Открыть отчёт</button><button>Скачать видео</button><button>Поделиться доступом</button></div>
+        </div>
+        <div class="cabinet-screen" data-cab-screen="investor">
+          <div class="cab-head"><b>Кабинет инвестора</b><span>Deck, финмодель, метрики и документы</span></div>
+          <div class="cab-grid">
+            <div><small>MRR пилота</small><b>350k ₽</b></div>
+            <div><small>ARR</small><b>4.2m ₽</b></div>
+            <div><small>Маржа</small><b>43%</b></div>
+            <div><small>Roadmap</small><b>Q1–Q4</b></div>
+          </div>
+          <div class="cab-actions"><button>Pitch deck</button><button>Финмодель</button><button>Data room</button></div>
+        </div>
+        <div class="cabinet-screen" data-cab-screen="fleet">
+          <div class="cab-head"><b>Кабинет автопарка</b><span>Машины, водители, нарушения и отчёты</span></div>
+          <div class="cab-grid">
+            <div><small>Машины</small><b>70</b></div>
+            <div><small>Активны</small><b>56</b></div>
+            <div><small>Тревоги</small><b>5</b></div>
+            <div><small>Индекс</small><b>87%</b></div>
+          </div>
+          <div class="cab-actions"><button>Карта</button><button>Инциденты</button><button>PDF отчёт</button></div>
+        </div>
+        <div class="cabinet-screen" data-cab-screen="partner">
+          <div class="cab-head"><b>Кабинет партнёра</b><span>Установки, сервис, API и комиссионная модель</span></div>
+          <div class="cab-grid">
+            <div><small>Установки</small><b>42</b></div>
+            <div><small>Сервис</small><b>8 заявок</b></div>
+            <div><small>API</small><b>Active</b></div>
+            <div><small>Комиссия</small><b>12%</b></div>
+          </div>
+          <div class="cab-actions"><button>Заявки</button><button>API ключ</button><button>Акты</button></div>
+        </div>
+      </div>
+    </section>
+
+<section class="section product-news">
+      <div class="section-head reveal">
+        <p class="kicker">Новости продукта</p>
+        <h2>Новости продукта и развитие платформы</h2>
+        <p class="muted">Такой блок помогает инвесторам видеть динамику: продукт развивается, появляются модули, сценарии и партнёрские возможности.</p>
+      </div>
+      <div class="news-filters reveal">
+        <button class="news-filter active" data-news="all">Все</button>
+        <button class="news-filter" data-news="app">Приложение</button>
+        <button class="news-filter" data-news="fleet">Автопарк</button>
+        <button class="news-filter" data-news="safety">Безопасность</button>
+      </div>
+      <div class="news-grid">
+        <article class="news-card reveal" data-news-card="app">
+          <span>Обновление приложения</span>
+          <h3>Новый AI‑чат для водителя</h3>
+          <p>Помощник объясняет события, предлагает безопасные действия и формирует краткий отчёт после поездки.</p>
+          <button class="news-btn">Подробнее</button>
+        </article>
+        <article class="news-card reveal" data-news-card="fleet">
+          <span>B2B‑релиз</span>
+          <h3>Улучшенная панель автопарка</h3>
+          <p>Диспетчер видит карту машин, нарушения, алкотесты, статус водителей и финансовую аналитику подписки.</p>
+          <button class="news-btn">Открыть демо</button>
+        </article>
+        <article class="news-card reveal" data-news-card="safety">
+          <span>Safety module</span>
+          <h3>SOS‑сценарии и видеоархив</h3>
+          <p>При ДТП система сохраняет видео, готовит координаты и уведомляет заданных получателей.</p>
+          <button class="news-btn">Смотреть сценарий</button>
+        </article>
+      </div>
+    </section>
+
+<section class="section feedback">
+      <div class="section-head reveal">
+        <p class="kicker">Обратная связь и доверие</p>
+        <h2>Инвестор должен видеть, что это не макет, а будущая сервисная экосистема</h2>
+      </div>
+      <div class="feedback-grid">
+        <article class="feedback-card reveal">
+          <span>01</span>
+          <h3>Поддержка 24/7</h3>
+          <p>Пользователь может написать в чат, вызвать оператора, отправить событие ДТП или заявку на сервис.</p>
+        </article>
+        <article class="feedback-card reveal">
+          <span>02</span>
+          <h3>Сервисные заявки</h3>
+          <p>Проверка камер, датчиков, обновлений, SIM/GPS, алкотестера и состояния устройства.</p>
+        </article>
+        <article class="feedback-card reveal">
+          <span>03</span>
+          <h3>B2B отчётность</h3>
+          <p>Автопарк получает отчёты по водителям, нарушениям, ДТП, маршрутам и окупаемости.</p>
+        </article>
+        <article class="feedback-card reveal">
+          <span>04</span>
+          <h3>Партнёрские каналы</h3>
+          <p>Страховые, сервисные центры, автосалоны, корпоративные автопарки и интеграторы.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="section final-cta black-contact">
+      <div class="reveal">
+        <p class="kicker">Контакт / демо / пилот</p>
+        <h2>Выберите сценарий — форма подстроится</h2>
+        <p class="muted">Компактно, но информативно: инвестор видит экономику, автопарк — пилот, партнёр — интеграции, покупатель — безопасность семьи.</p>
+
+        <div class="contact-live-card" id="contactLiveCard">
+          <span>Выбран сценарий</span>
+          <b>Инвестор</b>
+          <p>Подготовим pitch deck, финмодель, дорожную карту, unit‑экономику и формат входа в проект.</p>
+        </div>
+
+        <div class="direct-contacts">
+          <a href="https://t.me/NightEtt" target="_blank" rel="noopener">Telegram: @NightEtt</a>
+          <a href="tel:+79921310095">+7 992 131‑00‑95</a>
+        </div>
+      </div>
+
+      <form class="form premium-form compact-feedback reveal" id="leadForm">
+        <div class="form-head">
+          <b>Заявка на МИГ</b>
+          <span>Выберите роль и интерес. Ниже появится короткое пояснение.</span>
+        </div>
+
+        <input type="hidden" name="role" id="roleInput" value="Я инвестор">
+        <input type="hidden" name="interest" id="interestInput" value="Интерес: инвестиции">
+
+        <div class="choice-block compact-choice">
+          <label>Кто вы?</label>
+          <div class="choice-grid role-grid extended-role-grid">
+            <button type="button" class="choice-card active" data-target="roleInput" data-value="Я инвестор" data-info-title="Инвестор" data-info-text="Подготовим deck, финмодель, объём инвестиций, roadmap и стратегию масштабирования.">
+              <span>💼</span><b>Инвестор</b><small>финмодель и рост</small>
+            </button>
+            <button type="button" class="choice-card" data-target="roleInput" data-value="Я представитель автопарка" data-info-title="Автопарк" data-info-text="Предложим пилот на 10–50 машин, метрики безопасности, отчёты и расчёт подписки.">
+              <span>🚚</span><b>Автопарк</b><small>пилот и контроль</small>
+            </button>
+            <button type="button" class="choice-card" data-target="roleInput" data-value="Я партнёр" data-info-title="Партнёр" data-info-text="Обсудим страхование, сервисную сеть, установку, API и региональные продажи.">
+              <span>🤝</span><b>Партнёр</b><small>API и каналы</small>
+            </button>
+            <button type="button" class="choice-card" data-target="roleInput" data-value="Хочу купить для себя" data-info-title="Покупатель" data-info-text="Покажем семейный режим, антиугон, SOS, приложение и условия покупки устройства.">
+              <span>🚘</span><b>Покупатель</b><small>семья и авто</small>
+            </button>
+            <button type="button" class="choice-card" data-target="roleInput" data-value="Я страховая компания" data-info-title="Страховая" data-info-text="Покажем скоринг водителя, события риска, API и модель партнёрской монетизации.">
+              <span>🛡️</span><b>Страховая</b><small>скоринг и риск</small>
+            </button>
+            <button type="button" class="choice-card" data-target="roleInput" data-value="Я сервисный центр" data-info-title="Сервис" data-info-text="Обсудим установку устройств, обслуживание, регионы и сервисную маржу.">
+              <span>🔧</span><b>Сервис</b><small>установка</small>
+            </button>
+          </div>
+        </div>
+
+        <div class="choice-block compact-choice">
+          <label>Интерес</label>
+          <div class="choice-grid interest-grid extended-interest-grid">
+            <button type="button" class="choice-chip active" data-target="interestInput" data-value="Интерес: инвестиции">Инвестиции</button>
+            <button type="button" class="choice-chip" data-target="interestInput" data-value="Интерес: пилот на автопарк">Пилот</button>
+            <button type="button" class="choice-chip" data-target="interestInput" data-value="Интерес: партнёрство">Партнёрство</button>
+            <button type="button" class="choice-chip" data-target="interestInput" data-value="Интерес: покупка устройства">Покупка</button>
+            <button type="button" class="choice-chip" data-target="interestInput" data-value="Интерес: API интеграция">API</button>
+            <button type="button" class="choice-chip" data-target="interestInput" data-value="Интерес: демо продукта">Демо</button>
+            <button type="button" class="choice-chip" data-target="interestInput" data-value="Интерес: личный кабинет">Кабинет</button>
+            <button type="button" class="choice-chip" data-target="interestInput" data-value="Интерес: видео презентация">Видео</button>
+            <button type="button" class="choice-chip" data-target="interestInput" data-value="Интерес: сервисная модель">Сервис</button>
+          </div>
+        </div>
+
+        <div class="field-grid compact-fields">
+          <label><span>Имя / компания</span><input name="name" placeholder="Например: Иван / ООО Транспорт" required></label>
+          <label><span>Контакт</span><input name="contact" placeholder="@telegram / телефон / email" required></label>
+        </div>
+
+        <label class="full-field"><span>Комментарий</span><textarea name="comment" placeholder="Коротко: что хотите обсудить?"></textarea></label>
+
+        <button class="btn primary submit-btn" type="submit">Отправить заявку</button>
+        <small id="formStatus">Контакты проекта: Telegram @NightEtt · телефон +7 992 131‑00‑95</small>
+      </form>
+    </section>
+
+    <section class="owner-contacts">
+    <div>
+      <b>Контакты проекта МИГ</b>
+      <span>Для инвесторов, партнёров, автопарков и пилотных запусков</span>
+    </div>
+    <div class="owner-links">
+      <a href="https://t.me/NightEtt" target="_blank" rel="noopener">Telegram: @NightEtt</a>
+      <a href="tel:+79921310095">Телефон: +7 992 131‑00‑95</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <b>МИГ</b>
+    <span>Премиальная автомобильная платформа безопасности</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
